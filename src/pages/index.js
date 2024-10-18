@@ -1,8 +1,10 @@
 import RootLayout from '@/components/Layouts/RootLayout';
+import AllNews from '@/components/UI/AllNews';
 import Banner from '@/components/UI/Banner';
 import Head from 'next/head';
 
-const HomePage = () => {
+const HomePage = ({ allNews }) => {
+	console.log(allNews);
 	return (
 		<>
 			<Head>
@@ -18,6 +20,7 @@ const HomePage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Banner />
+			<AllNews allNews={allNews} />
 		</>
 	);
 };
@@ -36,5 +39,6 @@ export const getStaticProps = async () => {
 		props: {
 			allNews: data,
 		},
+		revalidate: 10,
 	};
 };
